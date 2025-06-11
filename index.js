@@ -5,7 +5,7 @@ const port = 3000;
 // Enable CORS (for testing purposes)
 const cors = require("cors");
 app.use(cors());
-
+app.use(cors({ optionsSuccessStatus: 200 }));
 // Serve static files
 app.use(express.static("public"));
 
