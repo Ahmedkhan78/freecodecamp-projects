@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Time Stamp Service</title>
+    <link rel="stylesheet" href="../public/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Time Stamp Service</h1>
+      <form id="timestamp-form">
+        <input
+          type="text"
+          id="date-input"
+          placeholder="Enter a date or timestamp"
+        />
+        <button type="submit">Get Timestamp</button>
+      </form>
+
+      <div id="result">
+        <h2>Result:</h2>
+        <pre id="result-json"></pre>
+      </div>
+    </div>
+
+    <script>
+      const form = document.getElementById("timestamp-form");
+      const input = document.getElementById("date-input");
+      const resultJson = document.getElementById("result-json");
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const dateValue = input.value.trim();
+        const response = await fetch(`/api/${dateValue}`);
+        const data = await response.json();
+
+        resultJson.textContent = JSON.stringify(data, null, 2);
+      });
+    </script>
+  </body>
+</html>
