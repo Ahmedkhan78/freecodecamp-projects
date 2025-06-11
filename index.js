@@ -7,7 +7,7 @@ const cors = require("cors");
 app.use(cors());
 
 // Serve static files
-app.use(express.static("views"));
+app.use(express.static("public"));
 
 // Check if the date string is valid
 function isValidDate(date) {
